@@ -1,0 +1,955 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --black-color: hsl(220, 24%, 12%);
+  --black-color-light: hsl(220, 24%, 15%);
+  --black-color-lighten: hsl(0, 0%, 4%);
+  --white-color: #fff;
+  --body-color: #000000;
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --font-family: "Poppins", sans-serif;
+  --normal-font-size: .938rem;
+
+  /*========== Font weight ==========*/
+  --font-regular: 400;
+  --font-semi-bold: 600;
+  
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1024px) {
+  :root {
+    --normal-font-size: 1rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+}
+
+ul {
+  list-style: none;
+  /* Color highlighting when pressed on mobile devices */
+  /*-webkit-tap-highlight-color: transparent;*/
+}
+
+a {
+  text-decoration: none;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+
+/*=============== HEADER ===============*/
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--black-color);
+  box-shadow: 0 2px 16px hsl(210, 5%, 93%);
+  z-index: var(--z-fixed);
+}
+
+/*=============== NAV ===============*/
+.nav {
+  height: var(--header-height);
+}
+
+.nav__logo, 
+.nav__burger, 
+.nav__close {
+  color: var(--white-color);
+}
+
+.nav__data {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo {
+  display: inline-flex;
+  align-items: center;
+  column-gap: .25rem;
+  font-weight: var(--font-semi-bold);
+  /* Color highlighting when pressed on mobile devices */
+  /*-webkit-tap-highlight-color: transparent;*/
+}
+
+.nav__logo i {
+  font-weight: initial;
+  font-size: 1.25rem;
+}
+
+
+.nav__toggle {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+
+.nav__burger, 
+.nav__close {
+  position: absolute;
+  width: max-content;
+  height: max-content;
+  inset: 0;
+  margin: auto;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: opacity .1s, transform .4s;
+}
+
+.nav__close {
+  opacity: 0;
+}
+
+/* Navigation for mobile devices */
+@media screen and (max-width: 1118px) {
+  .nav__menu {
+    position: absolute;
+    left: 0;
+    top: 2.5rem;
+    width: 100%;
+    height: calc(100vh - 3.5rem);
+    overflow: auto;
+    pointer-events: none;
+    opacity: 0;
+    transition: top .4s, opacity .3s;
+  }
+  .nav__menu::-webkit-scrollbar {
+    width: 0;
+  }
+  .nav__list {
+    background-color: var(--black-color);
+    padding-top: 1rem;
+  }
+}
+
+.nav__link {
+  color: var(--white-color);
+  background-color: var(--black-color);
+  font-weight: var(--font-semi-bold);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color .3s;
+}
+
+.nav__link:hover {
+  background-color: var(--black-color-light);
+}
+
+/* Show menu */
+.show-menu {
+  opacity: 1;
+  top: 3.5rem;
+  pointer-events: initial;
+}
+
+/* Show icon */
+.show-icon .nav__burger {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+.show-icon .nav__close {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+/*=============== DROPDOWN ===============*/
+.dropdown__item {
+  cursor: pointer;
+}
+
+.dropdown__arrow {
+  font-size: 1.25rem;
+  font-weight: initial;
+  transition: transform .4s;
+}
+
+.dropdown__link, 
+.dropdown__sublink {
+  padding: 1.25rem 1.25rem 1.25rem 2.5rem;
+  color: var(--white-color);
+  background-color: var(--black-color-light);
+  display: flex;
+  align-items: center;
+  column-gap: .5rem;
+  font-weight: var(--font-semi-bold);
+  transition: background-color .3s;
+}
+
+.dropdown__link i, 
+.dropdown__sublink i {
+  font-size: 1.25rem;
+  font-weight: initial;
+}
+
+.dropdown__link:hover, 
+.dropdown__sublink:hover {
+  background-color: var(--black-color);
+}
+
+.dropdown__menu, 
+.dropdown__submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s ease-out;
+}
+
+/* Show dropdown menu & submenu */
+.dropdown__item:hover .dropdown__menu, 
+.dropdown__subitem:hover > .dropdown__submenu {
+  max-height: 1000px;
+  transition: max-height .4s ease-in;
+}
+
+/* Rotate dropdown icon */
+.dropdown__item:hover .dropdown__arrow {
+  transform: rotate(180deg);
+}
+
+/*=============== DROPDOWN SUBMENU ===============*/
+.dropdown__add {
+  margin-left: auto;
+}
+
+.dropdown__sublink {
+  background-color: var(--black-color-lighten);
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 340px) {
+  .container {
+    margin-inline: 1rem;
+  }
+
+  .nav__link {
+    padding-inline: 1rem;
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 1118px) {
+  .container {
+    margin-inline: auto;
+  }
+
+  .nav {
+    height: calc(var(--header-height) + 2rem);
+    display: flex;
+    justify-content: space-between;
+  }
+  .nav__toggle {
+    display: none;
+  }
+  .nav__list {
+    height: 100%;
+    display: flex;
+    column-gap: 3rem;
+  }
+  .nav__link {
+    height: 100%;
+    padding: 0;
+    justify-content: initial;
+    color: #fdfeff;
+    column-gap: .25rem;
+  }
+  .nav__link:hover {
+    background-color: transparent;
+  }
+
+  .dropdown__item, 
+  .dropdown__subitem {
+    position: relative;
+  }
+
+  .dropdown__menu, 
+  .dropdown__submenu {
+    max-height: initial;
+    overflow: initial;
+    position: absolute;
+    left: 0;
+    top: 6rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s, top .3s;
+  }
+
+  .dropdown__link, 
+  .dropdown__sublink {
+    padding-inline: 1rem 3.5rem;
+  }
+
+  .dropdown__subitem .dropdown__link {
+    padding-inline: 1rem;
+  }
+
+  .dropdown__submenu {
+    position: absolute;
+    left: 100%;
+    top: .5rem;
+  }
+
+  /* Show dropdown menu */
+  .dropdown__item:hover .dropdown__menu {
+    opacity: 1;
+    top: 5.5rem;
+    pointer-events: initial;
+    transition: top .3s;
+  }
+
+  /* Show dropdown submenu */
+  .dropdown__subitem:hover > .dropdown__submenu {
+    opacity: 1;
+    top: 0;
+    pointer-events: initial;
+    transition: top .3s;
+  }
+}
+/* bener */
+/* bener */
+#hero {
+  background-image: url('../../assets/images/banner-bg.png');
+  height: auto;
+  padding: 80px 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 550px;
+}
+
+.hero-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.box {
+  flex: 1;
+  min-width: 300px;
+  padding-left: 60px;
+}
+
+.box img {
+  width: 70%; /* Gambar sesuai dengan container */
+  max-width: 450px;
+  height: auto; /* Pastikan gambar tetap proporsional */
+  object-fit: contain; /* Pastikan gambar tidak terpotong */
+  animation: fadeIn 3s ease-out forwards;
+}
+
+.teks-custom {
+  color: rgb(255, 255, 255); /* Warna RGB */
+}
+
+h1 {
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.btn-danger {
+  background-color: #0284ed;
+  color: white;
+  border: none;
+}
+
+.btn-outline-danger {
+  border: 2px solid #0284ed;
+  color: #fcfeff;
+  background: transparent;
+}
+
+.btn-outline-danger:hover {
+  background-color: #0284ed;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.header-berita2 {
+  display: flex;
+  justify-content: center; /* Posisikan secara horizontal */
+  align-items: center; /* Posisikan secara vertikal */
+  margin-top: 20px; /* Jarak ke atas */
+}
+
+/* Responsif: Mengubah tampilan untuk layar kecil */
+@media screen and (max-width: 768px) {
+  .hero-box {
+      flex-direction: column; /* Logo dan teks ditumpuk */
+      align-items: center;
+      text-align: center;
+  }
+
+  .box {
+      padding: 8px; /* Sedikit lebih kecil */
+  }
+
+  .box img {
+      width: 110px; /* Mengecilkan ukuran logo lebih lanjut */
+      height: auto;
+      margin-bottom: 20px; /* Tambahkan jarak di bawah logo */
+  }
+
+  h1 {
+      font-size: 1.5rem; /* Ukuran h1 lebih kecil */
+  }
+
+  p {
+      font-size: 14px; /* Ukuran teks paragraf lebih kecil */
+  }
+}
+/* divisi */
+.sub-divisi {
+  text-align: center;
+  font-size: 20px;  /* Ukuran lebih kecil */
+  font-weight: bold; /* Tidak bold */
+  color: rgb(245, 240, 240); /* Bisa disesuaikan agar lebih soft */
+  margin-bottom: 0px !important; /* Paksa jarak mepet */
+  margin-top: 20px;
+  padding-bottom: 0px; /* Pastikan tidak ada padding */
+/* Beri sedikit jarak dengan h2 */
+}
+.layanan {
+  margin-top: 50px; /* Sesuaikan jarak dari atas */
+}
+
+.layanan .row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px; /* Atur jarak antar elemen */
+}
+
+.lingkaran-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 160px; /* Sesuaikan lebar */
+}
+.frame-divisi {
+  display: flex;
+  overflow-x: auto; /* Scroll horizontal */
+  scroll-snap-type: x mandatory; /* Agar setiap frame tersnap */
+  gap: 15px;
+  padding: 10px;
+  width: 100%;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling di iOS */
+}
+
+.lingkaran {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  overflow: hidden;
+  border: 5px solid #062654;
+}
+
+.lingkaran img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 600px) {
+  .layanan .row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    overflow-x: auto;
+    padding-left: 200px; /* Tambahkan padding agar elemen pertama tidak terpotong */
+    padding-right: 15px; /* Pastikan elemen terakhir tidak terpotong */
+    scrollbar-width: none; /* Hilangkan scrollbar di Firefox */
+    -ms-overflow-style: none; /* Hilangkan scrollbar di Internet Explorer & Edge */
+    
+  }
+    .frame-wrapper {
+    overflow-x: auto; /* Aktifkan scroll horizontal */
+    white-space: nowrap;
+    scrollbar-width: none; /* Hilangkan scrollbar di Firefox */
+    -ms-overflow-style: none; /* Hilangkan scrollbar di Internet Explorer & Edge */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .layanan .row::-webkit-scrollbar {
+    display: none; /* Hilangkan scrollbar di Chrome, Safari, Opera */
+  }
+
+  .lingkaran-container {
+    min-width: 100px; /* Pastikan semua elemen tetap terlihat */
+  }
+
+  .lingkaran {
+    width: 80px;
+    height: 80px;
+    border-width: 3px;
+  }
+
+  .sub-divisi {
+    font-size: 12px;
+  }
+}
+
+/* berita */
+
+#berita .container {
+  display: flex;
+  justify-content: center; /* Posisikan container di tengah */
+}
+.fw-bold {
+  text-align: center;
+  color: #fff;
+  font-size: 40px;
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+.header-berita {
+  width: 50%; /* Batasi lebar agar lebih rapi */
+  text-align: center; /* Default ke kiri */
+  font-size: 30px; /* Ukuran default tulisan */
+  margin-bottom: 40px;
+  
+}
+.sub-title {
+  text-align: center;
+  font-size: 20px;  /* Ukuran lebih kecil */
+  font-weight: bold; /* Tidak bold */
+  color: #fff; /* Bisa disesuaikan agar lebih soft */
+  margin-bottom: 0px !important; /* Paksa jarak mepet */
+  margin-top: 25px;
+  padding-bottom: 0px; /* Pastikan tidak ada padding */
+/* Beri sedikit jarak dengan h2 */
+}
+/* Wrapper untuk berita agar bisa di-scroll horizontal */
+.frame-wrapper {
+  display: flex;
+  overflow-x: auto; /* Scroll horizontal */
+  scroll-snap-type: x mandatory; /* Agar setiap frame tersnap */
+  gap: 15px;
+  padding: 10px;
+  width: 100%;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling di iOS */
+}
+.lower-content h4 {
+  font-size: clamp(12px, 2vw, 16px); /* Ukuran fleksibel */
+  font-weight: bold;
+  text-align: none;
+  margin-bottom: 8px;
+  line-height: 1.2;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.header-berita h2 {
+  margin-top: 40px; /* Atur jarak h2 agar tetap rapi */
+  
+}
+.frame {
+  width: 50%; /* Pastikan frame menyesuaikan lebar layar */
+  max-width: 250px; /* Batasi ukuran maksimum */
+  height: auto; /* Biarkan tinggi menyesuaikan konten */
+  border: 2px solid #fff;
+  border-radius: 5px;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 2px 2px 10px #0000001a;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-img-top {
+  width: 100%; /* Gambar akan selalu mengisi frame */
+  max-height: 200px; /* Batasi tinggi gambar */
+  object-fit: cover; /* Pastikan gambar tidak terdistorsi */
+  border-radius: 5px;
+}
+.post-info {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px;
+  display: flex;
+  gap: 15px;
+  font-size: 14px;
+  color: #0a0a0a;
+}
+.read-more {
+  display: inline-block;
+  padding: 8px 15px;
+  background: #007bff;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+/* RESPONSIVE: Hanya 1 berita yang tampil di mobile */
+@media (max-width: 768px) {
+  .frame-wrapper {
+    overflow-x: auto; /* Aktifkan scroll horizontal */
+    white-space: nowrap;
+    scrollbar-width: none; /* Hilangkan scrollbar di Firefox */
+    -ms-overflow-style: none; /* Hilangkan scrollbar di Internet Explorer & Edge */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .frame {
+    width: 90%; /* Lebar frame 90% agar responsif */
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+/* ourteam */
+.slide-container{
+  max-width: 1120px;
+  width: 100%;
+  padding: 40px 0;
+}
+.slide-content{
+  margin: 0 40px;
+  overflow: hidden;
+  border-radius: 25px;
+}
+.card{
+  border-radius: 25px;
+  background-color: #FFF;
+}
+.image-content,
+.card-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 14px;
+}
+.image-content{
+  position: relative;
+  row-gap: 5px;
+  padding: 25px 0;
+}
+.overlay{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #4070F4;
+  border-radius: 25px 25px 0 25px;
+}
+.overlay::before,
+.overlay::after{
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  height: 40px;
+  width: 40px;
+  background-color: #4070F4;
+}
+.overlay::after{
+  border-radius: 0 25px 0 0;
+  background-color: #FFF;
+}
+.card-image{
+  position: relative;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background: #FFF;
+  padding: 3px;
+}
+.card-image .card-img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #4070F4;
+}
+.name{
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+.description{
+  font-size: 14px;
+  color: #707070;
+  text-align: center;
+}
+.button{
+  border: none;
+  font-size: 16px;
+  color: #FFF;
+  padding: 8px 16px;
+  background-color: #4070F4;
+  border-radius: 6px;
+  margin: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.button:hover{
+  background: #265DF2;
+}
+.swiper-navBtn{
+  color: #6E93f7;
+  transition: color 0.3s ease;
+}
+.swiper-navBtn:hover{
+  color: #4070F4;
+}
+.swiper-navBtn::before,
+.swiper-navBtn::after{
+  font-size: 35px;
+}
+.swiper-button-next{
+  right: 0;
+}
+.swiper-button-prev{
+  left: 0;
+}
+.swiper-pagination-bullet{
+  background-color: #6E93f7;
+  opacity: 1;
+}
+.swiper-pagination-bullet-active{
+  background-color: #4070F4;
+}
+@media screen and (max-width: 768px) {
+  .slide-content{
+    margin: 0 10px;
+  }
+  .swiper-navBtn{
+    display: none;
+  }
+}
+/* foto */
+.carousel {
+  margin: 20px auto; /* Menambahkan margin untuk memusatkan carousel */
+  max-width: 900px; /* Mengatur lebar maksimum carousel */
+}
+
+.carousel-inner img {
+  width: 100%; /* Memastikan gambar mengisi lebar carousel */
+  height: auto; /* Memastikan tinggi gambar proporsional */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); /* Menambahkan latar belakang transparan pada ikon kontrol */
+  border-radius: 50%; /* Membuat ikon kontrol berbentuk bulat */
+}
+
+.carousel-indicators li {
+  background-color: #f6f1f1; /* Mengatur warna indikator */
+}
+
+/* footer */
+
+footer{
+   position: relative;
+   width: 100%;
+   min-height: 350px;
+   padding: 3rem 1rem;
+}
+.container1 {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+
+}
+.row1{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.col1{
+  min-width: 250px;
+  color:#f2f2f2f2;
+  font-family: poppins;
+  padding:0 2rem;
+}
+.col1 .logo{
+  width: 100px;
+  margin-bottom:25px;
+}
+.col1 h3{
+  color:#062654;
+  margin-bottom: 20px;
+  position: relative;
+  cursor: pointer;
+}
+.col1 h3::after{
+  content: '';
+  height:3px;
+  width:0px;
+  background-color: #062654;
+  position: absolute;
+  bottom: 0;
+  left:0;
+  transition: 0.3s ease;
+
+}
+.col1 h3:hover::after{
+  width:30px
+}
+.col1 .social a i{
+  color:#062654;
+  margin-top:2rem;
+  margin-right: 5px;
+  transition: 0.3s ease;
+}
+.col1 .social a i:hover{
+  transform: scale(1.5);
+  filter:grayscale(25);
+}
+.col1 .links a{
+  display: block;
+  text-decoration: none;
+  color:#f2f2f2;
+  margin-bottom: 5px;
+  position: relative;
+  transition: 0.3s ease;
+}
+.col1 .links a::before{
+  content:'';
+  height: 16px;
+  width:3px;
+  position: absolute;
+  top:5px;
+  left:-10px;
+  background-color: #062654;
+  transition: 0.5s ease;
+  opacity: 0;
+}
+.col1 .links a:hover::before{
+  opacity: 1;
+}
+.col1 .links a:hover{
+  transform: translateX(-8px);
+  color:#062654;
+}
+.col1 .contact-details{
+  display: inline-flex;
+  justify-content: space-between;
+}
+.col1 .contact-details i{
+  margin-right:15px;
+}
+.row1 .form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:2rem 0;
+}
+.row1 .form input{
+  background-color: #1a1c20ff;
+  border:0;
+  outline:none;
+  padding:14px 20px;
+  border-radius: 6px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form button{
+  padding:14px 20px;
+  border:0;
+  border-radius: 6px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: blue;
+}
+.bottom-bar{
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 50px;
+}
+.bottom-bar p{
+  align-items: center;
+  color: #343434;
+  margin: 0;
+  font-size: 16px;
+  padding: 7px;
+}
+
+/********** Responsive Design ********/
+@media(max-width:900px)
+{
+.row1{
+  flex-direction: column;
+}
+.col1{
+  width: 100%;
+  text-align: left;
+  margin-bottom: 25px;
+}
+}
+@media(max-width:768px)
+{
+.row1{
+  flex-direction: column;
+}
+.col1{
+  width: 100%;
+  text-align: left;
+  margin-bottom: 20px;
+}
+}

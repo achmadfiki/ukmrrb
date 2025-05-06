@@ -1,0 +1,728 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.custom-button {
+    padding: 10px 30px;
+    margin-left: 15px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    display: inline-block;
+   transition: all 0.3s ease-in-out;
+}
+.button-masuk {
+    background-color: rgba(192, 180, 11, 0.99);
+}
+.button-daftar {
+     background-color: rgb(255, 0, 0);
+}
+
+.custom-button:hover {
+        transform: scale(1.1);
+   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+	font-family: "Poppins", sans-serif;
+	background: #0f0544;
+	
+}
+.navbar{
+	/* background:rgb(4, 43, 101); */
+  background: radial-gradient(circle, rgba(4, 43, 101, 0.8), rgba(4, 43, 101, 0.6)), url('../../assets/images/noisy.png');
+	margin: 0;
+	padding: 5px 20px;
+	position: fixed;
+  top: 0;
+  left: 0;
+  width: 97%;
+  z-index: 1000;
+  
+
+}
+ 
+.logo{
+	font-size: 14pt;
+	font-weight: bold;
+	text-decoration: none;
+	color: white;
+}
+ 
+.container{
+	display: flex;
+	justify-content: space-between;
+	align-items: none;
+  
+}
+ 
+.tombol{
+	display: none;
+	color: white;
+	font-size: 14pt;			
+}
+ 
+.tombol:hover{
+	cursor: pointer;
+}
+ 
+.menu{
+	margin: 0;
+	display: flex;
+	list-style: none;
+	padding: 0;			
+}
+ 
+.menu li{
+	padding-left: 0;
+	margin-right: 10px;
+}
+ 
+.menu li a{
+	padding:10px;
+	color: white;
+	text-decoration: none;
+	display: inline-block;
+}
+
+/* bener */
+#hero{
+    background-image: url('../../assets/images/banner-bg.png');
+    height: auto;
+    padding: 80px 20px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+}
+.hero-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.box {
+  flex: 1;
+  min-width: 300px;
+  padding-left: 60px;
+}
+
+
+
+.box img {
+  width: 100%; /* Gambar sesuai dengan container */
+  max-width: 450px;
+  height: auto; /* Pastikan gambar tetap proporsional */
+  object-fit: contain; /* Pastikan gambar tidak terpotong */
+  animation: fadeIn 3s ease-out forwards;
+}
+
+
+.teks-custom {
+    color: rgb(255, 255, 255); /* Warna RGB */
+}
+
+h1 {
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.btn-danger {
+  background-color: #0284ed;
+  color: white;
+  border: none;
+}
+
+.btn-outline-danger {
+  border: 2px solid  #0284ed;
+  color:  #fcfeff;
+  background: transparent;
+}
+
+.btn-outline-danger:hover {
+  background-color:  #0284ed;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+/* Style dasar untuk dropdown */
+li {
+  list-style: none;
+  position: relative;
+}
+
+li a {
+  text-decoration: none;
+  display: block;
+  padding: 10px 15px;
+  color: white;
+  position: relative;
+}
+
+/* Efek garis bawah saat hover */
+li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2px; /* Sesuaikan posisi garis */
+  width: 0;
+  height: 2px;
+  background-color: #066cd9; /* Warna garis bawah */
+  transition: width 0.3s ease-in-out;
+}
+
+li a:hover::after {
+  width: 100%;
+}
+
+li a:active {
+  color: #ff0000;;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.dropdown-menu ul {
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu li {
+  position: relative;
+}
+
+/* Tampilkan dropdown saat hover */
+li:hover > .dropdown-menu {
+  display: block;
+}
+
+
+/* Efek animasi untuk teks muncul dari kiri */
+.fadeInLeft {
+    animation: fadeInLeft 1s ease-in-out both;
+}
+
+/* Efek animasi untuk tombol muncul dari kanan */
+.fadeInRight {
+    animation: fadeInRight 1s ease-in-out both;
+}
+
+/* Efek animasi untuk gambar tetap di tempatnya */
+.zoomIn {
+    animation: zoomIn 1s ease-in-out both;
+}
+
+/* Tambahan efek delay untuk animasi bertahap */
+.delay-05s {
+    animation-delay: 0.5s;
+}
+.delay-08s {
+    animation-delay: 0.8s;
+}
+.delay-1s {
+    animation-delay: 1s;
+}
+
+/* Animasi Fade In dari Kiri */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Animasi Fade In dari Kanan */
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Animasi Zoom In (Gambar tetap di tempatnya) */
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* divisi */
+.lingkaran {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;  /* Sesuaikan ukuran lingkaran */
+  height: 150px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  overflow: hidden; /* Agar gambar tidak keluar dari lingkaran */
+  border: 5px solid blue; /* Garis stroke biru */
+  margin: 20px;
+}
+
+.lingkaran img {
+  width: 100%;  /* Gambar memenuhi lingkaran */
+  height: 100%;
+  object-fit: cover; /* Memastikan gambar menutupi area */
+}
+/* penguman */
+.frame {
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  max-width: 300px; /* Atur ukuran frame */
+  margin-left: auto;
+  margin-right: auto;
+}
+.card-img-top {
+  width: 100%; /* Atur ukuran gambar agar responsif */
+  height: auto; /* Pastikan proporsi gambar terjaga */
+  object-fit: cover; /* Sesuaikan tampilan gambar */
+  border-radius: 5px;
+}
+/* tulisan berita */
+#berita .container {
+  display: flex;
+  justify-content: center; /* Posisikan container di tengah */
+}
+
+.header-berita {
+  width: 50%; /* Batasi lebar agar lebih rapi */
+  text-align: center; /* Default ke kiri */
+  color: rgb(245, 240, 240);
+  font-size: 30px; /* Ukuran default tulisan */
+  margin-bottom: 40px;
+  
+}
+.sub-title {
+  text-align: center;
+  font-size: 20px;  /* Ukuran lebih kecil */
+  font-weight: bold; /* Tidak bold */
+  color: rgb(245, 240, 240); /* Bisa disesuaikan agar lebih soft */
+  margin-bottom: 0px !important; /* Paksa jarak mepet */
+  padding-bottom: 0px; /* Pastikan tidak ada padding */
+/* Beri sedikit jarak dengan h2 */
+}
+.header-berita h2 {
+  margin-top: 2px; /* Atur jarak h2 agar tetap rapi */
+}
+.frame {
+  width: 100%; /* Pastikan frame menyesuaikan lebar layar */
+  max-width: 300px; /* Batasi ukuran maksimum */
+  height: auto; /* Biarkan tinggi menyesuaikan konten */
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-img-top {
+  width: 100%; /* Gambar akan selalu mengisi frame */
+  max-height: 200px; /* Batasi tinggi gambar */
+  object-fit: cover; /* Pastikan gambar tidak terdistorsi */
+  border-radius: 5px;
+}
+
+/* Responsif untuk layar kecil */
+@media screen and (max-width: 768px) {
+  .frame {
+    max-width: 90%; /* Perbesar frame agar lebih fleksibel */
+    padding: 10px;
+  }
+
+  .header-berita {
+    width: 80%; /* Batasi lebar agar tetap rapi */
+    font-size: 24px; /* Sesuaikan ukuran font */
+  }
+
+  .sub-title {
+    font-size: 18px;
+  }
+
+  .card-img-top {
+    max-height: 150px; /* Sesuaikan tinggi gambar di layar kecil */
+  }
+
+  #berita .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/*  */
+
+
+/* PEngumumna */
+/* General News Section Styles */
+.news-section {
+  padding: 60px 0;
+  background-color: #ececec;
+  position: relative;
+}
+
+.sec-title {
+  margin-bottom: 40px;
+}
+
+.sec-title .title {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #007bff;
+  text-transform: uppercase;
+}
+
+.sec-title h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+}
+
+.news-block {
+  margin-bottom: 30px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.news-block:hover {
+  transform: translateY(-5px);
+}
+
+.inner-box {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.image-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-box img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-box:hover img {
+  transform: scale(1.05);
+}
+
+.lower-content {
+  padding: 20px;
+}
+
+.post-info {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px;
+  display: flex;
+  gap: 15px;
+  font-size: 14px;
+  color: #666;
+}
+
+.post-info li {
+  display: flex;
+  align-items: center;
+}
+
+.post-info li span {
+  margin-right: 5px;
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+h4 a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+h4 a:hover {
+  color: #007bff;
+}
+
+.btn-box {
+  margin-top: 15px;
+}
+
+.read-more {
+  display: inline-block;
+  padding: 8px 15px;
+  background: #007bff;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.read-more:hover {
+  background: #0056b3;
+}
+/* icon */
+
+.far {
+  display: inline-block;
+  width: 22px; /* Sesuaikan ukuran */
+  height: 22px;
+  filter: grayscale(100%) brightness(50%);
+  background-size: cover;
+}
+.header-berita2 {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.fa-user {
+  background-image: url('../../assets/icons/user.png'); /* Ganti dengan path gambar */
+}
+
+.fa-calendar {
+  background-image: url('../../assets/icons/calendar.png'); /* Ganti dengan path gambar */
+}
+
+/* Vidio */
+#video {
+  background-image: url('../../assets/images/banner-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  height: 500px;
+  flex-wrap: wrap; /* Agar tetap rapi saat layar mengecil */
+  padding: 20px; /* Tambahan padding agar tidak terlalu rapat */
+}
+
+#video .container {
+  max-width: 100%;
+  height: auto; /* Ubah ke auto agar fleksibel */
+  display: flex;
+  flex-wrap: wrap; /* Agar video tetap sejajar di layar kecil */
+  gap: 20px; /* Tambahkan jarak antar video */
+  padding: 20px; /* Tambahkan padding agar tidak terlalu mepet ke tepi */
+}
+
+.video-container {
+  flex: 1 1 400px; /* Ukuran fleksibel dengan minimal 400px */
+  max-width: 400px; /* Agar tidak terlalu besar */
+  aspect-ratio: 16 / 9; /* Menjaga proporsi video */
+  display: flex;
+  justify-content: center; /* Memusatkan video di dalam kontainer */
+  align-items: center; /* Memusatkan video secara vertikal */
+  padding: 10px; /* Tambahkan padding di dalam kontainer video */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan untuk efek kedalaman */
+  border-radius: 10px; /* Sudut melengkung untuk kontainer video */
+}
+
+.video-container iframe {
+  width: 100%; /* Lebar otomatis mengikuti container */
+  height: 100%; /* Tinggi menyesuaikan aspect ratio */
+  border-radius: 10px; /* Membuat sudut melengkung */
+  border: none;
+}
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+  #video {
+      height: auto; /* Mengubah height menjadi otomatis agar fleksibel */
+      flex-direction: column; /* Mengubah orientasi ke vertikal */
+  }
+  
+  .video-container {
+      flex: 1 1 90%; /* Supaya iframe tetap proporsional */
+      max-width: 90%;
+  }
+}
+
+/* Foto */
+.section-foto {
+  /* background-attachment: fixed; */
+  position: relative;
+  background-position: top;
+  background-size: cover;
+  height: 500px;
+  width: 100%;
+  color: #fcfeff;
+  display: fixed;
+}
+.parallax{
+  background-image: url('../../assets/images/banner-bg.png');
+}
+.align-left {
+  position: absolute;
+  top: 250px;  /* Geser ke bawah 50px */
+  left: 1000px; /* Geser ke kanan 20px */
+}
+@media (max-width: 768px) {
+  .align-left {
+    top: 50px;  /* Pindah lebih ke atas */
+    left: 500px; /* Sesuaikan posisi agar tetap terlihat */
+  }
+}
+.container-strip {
+  display: flex; 
+  align-items: center; /* Pusatkan elemen secara vertikal */
+  position: absolute;
+  top: 50px;  /* Geser ke bawah 50px */
+  left: 35px; /* Geser ke kanan 20px */
+}
+
+.stripe-putih {
+  width: 60px; /* Sesuaikan panjang garis */
+  height: 5px; /* Atur ketebalan garis */
+  background-color: white; /* Pastikan warna terlihat */
+  display: inline-block;
+}
+
+.judul-text {
+  font-weight: bold;
+  color: white;
+  text-align: start;
+  margin: 0;
+  margin-left: 10px; 
+  font-size: 20px;
+}
+
+
+
+.row {
+  display: flex; /* Menjadikan gambar dalam satu baris */
+  flex-wrap: wrap; /* Agar gambar turun ke bawah jika layar kecil */
+  gap: 10px; /* Jarak antar gambar */
+  justify-content: flex-start; /* Gambar rata kiri */
+  padding: 100px; /* Padding di sekitar baris */
+}
+
+.row img {
+  height: 150px; /* Mengatur tinggi gambar */
+  width: auto; /* Menjaga proporsi gambar */
+  border-radius: 5px; /* Membuat sudut melengkung */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan */
+  transition: transform 0.3s ease; /* Transisi untuk efek hover */
+}
+
+.row img:hover {
+  transform: scale(1.05); /* Efek zoom saat hover */
+}
+/* Saat layar lebih kecil dari 768px, gambar mengecil */
+@media (max-width: 768px) {
+  .row {
+    padding: 50px; /* Kurangi padding agar lebih proporsional */
+    
+  }
+
+  .row img {
+    height: 95px; /* Gambar mengecil */
+    position: relative;
+    top: 80px; 
+  }
+}
+
+
+
+/* Responsif: Memperlambat animasi di layar kecil */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .tombol {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .menu li {
+    margin: 5px 0;
+  }
+
+  .hero-box {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .box {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .custom-button {
+    padding: 8px 20px;
+    font-size: 14px;
+    text-align: center;
+  }
+}
